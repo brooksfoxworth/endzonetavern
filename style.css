@@ -157,16 +157,12 @@ body {
 
 /* Dock/Footer Styles */
 footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    position: static;
+    width: 100%;
     z-index: 50;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
     margin: 0;
-    padding: 8px 0 0;
-    background-color: rgba(17, 24, 39, 0.95) !important; /* Match bg-gray-900 with alpha */
+    padding: 0;
+    background-color: rgb(17, 24, 39) !important;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -196,14 +192,8 @@ footer svg {
 
 /* Safe area handling for mobile browsers */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    footer {
-        padding-bottom: max(env(safe-area-inset-bottom), 8px); /* Use safe area but ensure minimum padding */
-    }
-    
-    @media (min-width: 768px) {
-        footer {
-            padding-bottom: 0;
-        }
+    body {
+        padding-bottom: env(safe-area-inset-bottom);
     }
     
     .h-safe-bottom {
@@ -211,10 +201,10 @@ footer svg {
     }
 }
 
-/* Ensure main content doesn't get hidden behind the dock */
+/* Main content area */
 main {
     flex: 1;
-    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0)); /* Account for iPhone home indicator */
+    padding-bottom: 1rem;
     overflow-y: auto;
 }
 

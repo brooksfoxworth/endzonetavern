@@ -19,18 +19,21 @@
 
 </head>
 <body class="bg-[var(--background-color)] text-[var(--text-dark)]">
-<div class="relative flex size-full min-h-screen flex-col justify-between group/design-root overflow-x-hidden">
+<div class="flex flex-col min-h-screen">
+    <!-- Main content area -->
+    <div class="flex-1">
+        <header class="sticky top-0 z-10 bg-[var(--background-color)]/80 backdrop-blur-sm">
+            <div id="dynamic-header-content"></div>
+        </header>
 
-    <header class="sticky top-0 z-10 bg-[var(--background-color)]/80 backdrop-blur-sm">
-        <div id="dynamic-header-content">
-            </div>
-    </header>
-
-    <main id="main-content" class="px-4 pt-6 pb-24 flex-grow">
+        <main id="main-content" class="px-4 py-6">
+            <!-- Main content will be injected here -->
         </main>
-
-    <footer class="fixed bottom-0 left-0 right-0 bg-gray-900/95 border-t border-gray-700 shadow-lg text-white">
-        <div class="flex items-start justify-around px-2 pt-2 pb-safe-bottom w-full">
+    </div>
+    
+    <!-- Static Footer -->
+    <footer class="bg-gray-900 border-t border-gray-700 text-white">
+        <div class="flex justify-around px-2 py-2">
             <a class="flex flex-col items-center justify-center gap-1 text-white w-1/4 hover:bg-gray-700 transition-colors py-2 rounded-lg" href="#" data-page-link="home">
                 <div class="flex h-7 items-center justify-center">
                     <svg fill="currentColor" height="24px" viewBox="0 0 24 24" width="24px" xmlns="http://www.w3.org/2000/svg">
