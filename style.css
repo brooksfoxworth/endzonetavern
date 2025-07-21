@@ -1,17 +1,85 @@
 :root {
-    --primary-color: #ffd700;
-    --secondary-color: #ffeb3b;
-    --background-color: #2a2a2a;
-    --text-dark: #ffd700;
-    --text-medium: #cccccc;
-    --text-light: #1a1a1a;
-    --border-color: #404040;
-    --form-background-color: #1a1a1a;
-    --gradient-primary: linear-gradient(135deg, #ffd700 0%, #ffeb3b 100%);
-    --gradient-secondary: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
-    --gradient-hero: linear-gradient(135deg, rgba(255, 215, 0, 0.9) 0%, rgba(255, 235, 59, 0.8) 100%);
-    --shadow-glow: 0 0 20px rgba(255, 215, 0, 0.3);
-    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --primary-color: #1e3a8a;       /* Dark blue */
+    --secondary-color: #dc2626;     /* Red accent */
+    --background-color: #707070;    /* Final darker gray background */
+    --surface-color: #909090;       /* Final darker surface */
+    --text-dark: #000000;           /* Black for text */
+    --text-medium: #101010;         /* Final very dark gray */
+    --text-light: #404040;          /* Final dark gray */
+    --border-color: #555555;        /* Final dark border gray */
+    --form-background-color: #909090; /* Final darker form background */
+    --gradient-primary: linear-gradient(135deg, #2563eb 0%, #1e40af 100%);
+    --gradient-secondary: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+    --gradient-hero: linear-gradient(135deg, rgba(30, 58, 138, 0.9) 0%, rgba(37, 99, 235, 0.8) 100%);
+    --shadow-glow: 0 0 20px rgba(37, 99, 235, 0.3);
+    --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Swiper Container Fixes */
+.swiper-container-fix {
+    overflow: visible;
+    padding-bottom: 60px !important;
+}
+
+/* Uniform Card Heights */
+.swiper-card {
+    display: flex;
+    flex-direction: column;
+    height: 100% !important;
+    min-height: 400px;
+}
+
+.swiper-card > div:last-child {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Pagination Centering */
+.swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    margin-top: 30px !important;
+    text-align: center;
+}
+
+.game-day-swiper-pagination,
+.fans-say-swiper-pagination {
+    position: relative !important;
+    bottom: auto !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: auto !important;
+    margin-top: 30px !important;
+    text-align: center;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+/* Swiper Slide Heights */
+.swiper-wrapper {
+    align-items: stretch !important;
+}
+
+.swiper-slide {
+    height: auto !important;
+    display: flex !important;
+}
+
+/* Game Day and Fans Say specific card styling */
+.game-day-swiper .swiper-card,
+.fans-say-swiper .swiper-card {
+    min-height: 420px;
+}
+
+/* Testimonial card specific styling */
+.fans-say-swiper .swiper-card {
+    min-height: 280px;
 }
 
 body {
@@ -94,11 +162,35 @@ footer {
     left: 0;
     right: 0;
     z-index: 9999;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     margin: 0;
     padding: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dock link styles */
+footer, footer *, footer a, footer span, footer p, footer svg {
+    color: #fff !important;
+    fill: #fff !important;
+    text-shadow: 0 0 2px #0007;
+}
+
+footer a {
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+footer a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Dock icon styles */
+footer svg {
+    fill: currentColor;
+    width: 24px;
+    height: 24px;
 }
 
 /* Safe area handling for mobile browsers */
@@ -125,7 +217,6 @@ main {
     flex: 1;
     padding-bottom: 5.5rem; /* Height of the dock */
     overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
 }
 
 /* Enhanced card hover effects */
@@ -185,6 +276,149 @@ main {
 .overflow-x-auto {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
+}
+
+/* Swiper Styles */
+.swiper {
+    width: 100%;
+    padding: 20px 0;
+    touch-action: pan-y;
+}
+
+.swiper-wrapper {
+    display: flex;
+    transition-property: transform;
+    box-sizing: content-box;
+}
+
+.swiper-slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    transition-property: transform;
+}
+
+.swiper-pagination {
+    position: relative;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    display: inline-block;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 1;
+    margin: 0 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #3b82f6; /* blue-500 */
+    transform: scale(1.2);
+}
+
+/* Fans Say Swiper specific styles */
+.fans-say-swiper .swiper-pagination-bullet-active {
+    transform: scale(1);
+}
+
+/* Game Day Swiper specific styles */
+.game-day-swiper .swiper-wrapper {
+    align-items: stretch;
+}
+
+.game-day-swiper .swiper-slide {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-day-swiper .swiper-slide .swiper-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.game-day-swiper .swiper-pagination {
+    position: static;
+    margin-top: 2rem;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .game-day-swiper .swiper-slide {
+        width: 50%;
+    }
+}
+
+@media (min-width: 1024px) {
+    .game-day-swiper .swiper-slide {
+        width: 33.333%;
+    }
+}
+
+/* Section Headers */
+.section-header {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 3rem;
+    padding-bottom: 0.75rem;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #3b82f6, #ef4444);
+    border-radius: 2px;
+}
+
+/* Ensure proper spacing between sections */
+section {
+    margin-bottom: 4rem;
+    position: relative;
+}
+
+/* Fix for section backgrounds */
+.bg-gradient-to-r {
+    border-radius: 1rem;
+    margin: 1.5rem 0;
+    overflow: hidden;
+}
+
+
+
+/* Fix for swiper container clipping issues */
+.swiper-container-fix {
+    overflow: visible; 
+    z-index: 1;
+}
+
+/* Swiper card fix */
+.swiper-card {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Menu item cards */
+.menu-item-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.menu-item-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .menu-category-subheader {
