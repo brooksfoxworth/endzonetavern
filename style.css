@@ -157,9 +157,12 @@ body {
 
 /* Dock/Footer Styles */
 footer {
-    position: static;
-    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     z-index: 50;
+    width: 100%;
     margin: 0;
     padding: 0;
     background-color: rgb(17, 24, 39) !important;
@@ -204,7 +207,7 @@ footer svg {
 /* Main content area */
 main {
     flex: 1;
-    padding-bottom: 1rem;
+    padding-bottom: 5.5rem; /* Add padding to prevent content from being hidden behind the fixed footer */
     overflow-y: auto;
 }
 
