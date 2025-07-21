@@ -161,14 +161,14 @@ footer {
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
-    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+    z-index: 50;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     margin: 0;
-    padding: 8px 0 0; /* Reduced top padding, removed bottom padding */
-    background-color: rgba(0, 0, 0, 0.85) !important; /* Made background color more consistent */
+    padding: 8px 0 0;
+    background-color: rgba(17, 24, 39, 0.95) !important; /* Match bg-gray-900 with alpha */
     border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -4px 6px -1px rgba(0, 0, 0, 0.1), 0 -2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
 /* Dock link styles */
@@ -196,16 +196,14 @@ footer svg {
 
 /* Safe area handling for mobile browsers */
 @supports (padding-bottom: env(safe-area-inset-bottom)) {
-    body {
-        padding-bottom: env(safe-area-inset-bottom);
-    }
-    
     footer {
-        padding-bottom: env(safe-area-inset-bottom);
+        padding-bottom: max(env(safe-area-inset-bottom), 8px); /* Use safe area but ensure minimum padding */
     }
     
-    .pb-safe-bottom {
-        padding-bottom: env(safe-area-inset-bottom);
+    @media (min-width: 768px) {
+        footer {
+            padding-bottom: 0;
+        }
     }
     
     .h-safe-bottom {
@@ -216,7 +214,7 @@ footer svg {
 /* Ensure main content doesn't get hidden behind the dock */
 main {
     flex: 1;
-    padding-bottom: 5.5rem; /* Height of the dock */
+    padding-bottom: calc(5.5rem + env(safe-area-inset-bottom, 0)); /* Account for iPhone home indicator */
     overflow-y: auto;
 }
 
