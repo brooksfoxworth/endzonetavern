@@ -267,7 +267,7 @@ const PageContent = {
                             <div class="bg-white rounded-lg p-4 shadow-sm">
                                 <div class="w-8 h-1 bg-blue-400 mb-3 mx-auto"></div>
                                 <h3 class="font-bold text-[var(--text-dark)] mb-2">Game Day Experience</h3>
-                                <p class="text-[var(--text-medium)] text-sm">Over 30 HD screens and a stadium-quality sound system</p>
+                                <p class="text-[var(--text-medium)] text-sm">Multiple HD screens and a stadium-quality sound system</p>
                             </div>
                             <div class="bg-white rounded-lg p-4 shadow-sm">
                                 <div class="w-8 h-1 bg-green-400 mb-3 mx-auto"></div>
@@ -335,28 +335,20 @@ const PageContent = {
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-[var(--primary-color)] font-semibold">Email:</span>
-                            <span class="text-[var(--text-medium)]">info@pierogihouse.com</span>
+                            <span class="text-[var(--text-medium)]">endzonetavernsc@gmail.com</span>
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-[var(--primary-color)] font-semibold">Address:</span>
-                            <span class="text-[var(--text-medium)]">123 Polish Street, Foodie City, FC 12345</span>
+                            <span class="text-[var(--text-medium)]">637 Broadway St, Myrtle Beach, SC 29577</span>
                         </div>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4">Hours</h2>
-                    <div class="space-y-2">
-                        <div class="flex justify-between">
-                            <span class="text-[var(--text-medium)]">Monday - Thursday:</span>
-                            <span class="text-[var(--text-dark)] font-medium">11:00 AM - 9:00 PM</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-[var(--text-medium)]">Friday - Saturday:</span>
-                            <span class="text-[var(--text-dark)] font-medium">11:00 AM - 10:00 PM</span>
-                        </div>
-                        <div class="flex justify-between">
-                            <span class="text-[var(--text-medium)]">Sunday:</span>
-                            <span class="text-[var(--text-dark)] font-medium">12:00 PM - 8:00 PM</span>
+                    <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4 text-center">Hours</h2>
+                    <div class="space-y-3">
+                        <div class="flex flex-col items-center text-center">
+                            <span class="text-[var(--text-medium)]">Every Day</span>
+                            <span class="text-[var(--text-dark)] font-medium text-lg">3:00 PM - 12:00 AM</span>
                         </div>
                 </div>
             </div>
