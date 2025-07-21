@@ -166,8 +166,9 @@ footer {
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     margin: 0;
-    padding: 0;
-    background-color: rgba(0, 0, 0, 0.8);
+    padding: 8px 0 0; /* Reduced top padding, removed bottom padding */
+    background-color: rgba(0, 0, 0, 0.85) !important; /* Made background color more consistent */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Dock link styles */
