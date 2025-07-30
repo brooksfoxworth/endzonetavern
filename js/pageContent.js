@@ -84,15 +84,15 @@ const PageContent = {
                     <div class="swiper-slide">
                       <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover border border-gray-700 group swiper-card" style="animation: slideInLeft 0.6s ease-out 0.6s both;">
                           <div class="relative">
-                              <img src="./images/nachos.jpeg" alt="Epic Nacho Platter" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                              <img src="./assets/images/buffalo.jpg" alt="Buffalo Chicken Wings" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                               <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Epic Nacho Platter</h3>
+                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Buffalo Chicken Wings</h3>
                           </div>
                           <div class="p-4 flex-grow flex flex-col">
-                              <p class="text-gray-300 mb-4 text-sm flex-grow">Loaded with cheese, jalapeños, sour cream, and your choice of chicken or beef.</p>
+                              <p class="text-gray-300 mb-4 text-sm flex-grow">Crispy chicken wings tossed in spicy buffalo sauce</p>
                               <div class="flex justify-between items-center mt-auto">
-                                  <span class="text-xl font-bold text-white">$14.99</span>
-                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'gameday-1', name: 'Epic Nacho Platter', price: 14.99, image: './images/nachos.jpeg' })">
+                                  <span class="text-xl font-bold text-white">$8.99</span>
+                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'buffalo-wings', name: 'Buffalo Chicken Wings (6)', price: 8.99, image: './assets/images/buffalo.jpg' })">
                                       Add to Order
                                   </button>
                               </div>
@@ -102,15 +102,15 @@ const PageContent = {
                     <div class="swiper-slide">
                       <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover border border-gray-700 group swiper-card" style="animation: slideInLeft 0.6s ease-out 0.8s both;">
                           <div class="relative">
-                              <img src="./images/wings.jpeg" alt="Signature Wings" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                              <img src="./assets/images/pepperoni.png" alt="Pepperoni Pizza" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                               <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Signature Wings</h3>
+                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Pepperoni Pizza</h3>
                           </div>
                           <div class="p-4 flex-grow flex flex-col">
-                              <p class="text-gray-300 mb-4 text-sm flex-grow">A dozen crispy wings tossed in your choice of our 10 signature sauces.</p>
+                              <p class="text-gray-300 mb-4 text-sm flex-grow">Classic pepperoni pizza with cheese and our signature sauce</p>
                               <div class="flex justify-between items-center mt-auto">
-                                  <span class="text-xl font-bold text-white">$16.99</span>
-                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'gameday-2', name: 'Signature Wings', price: 16.99, image: './images/wings.jpeg' })">
+                                  <span class="text-xl font-bold text-white">$10.99</span>
+                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'pepperoni-pizza', name: 'Pepperoni Pizza', price: 10.99, image: './assets/images/pepperoni.png' })">
                                       Add to Order
                                   </button>
                               </div>
@@ -120,15 +120,33 @@ const PageContent = {
                     <div class="swiper-slide">
                       <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover border border-gray-700 group swiper-card" style="animation: slideInLeft 0.6s ease-out 1.0s both;">
                           <div class="relative">
-                              <img src="./images/sliders.jpeg" alt="Game Day Sliders" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                              <img src="https://images.unsplash.com/photo-1548340748-6d2b7d7da280?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Mozzarella Sticks" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
                               <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Game Day Sliders</h3>
+                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Mozzarella Sticks</h3>
                           </div>
                           <div class="p-4 flex-grow flex flex-col">
-                              <p class="text-gray-300 mb-4 text-sm flex-grow">Four juicy beef sliders with cheddar cheese, pickles, and our secret sauce.</p>
+                              <p class="text-gray-300 mb-4 text-sm flex-grow">Breaded mozzarella sticks served with marinara sauce</p>
                               <div class="flex justify-between items-center mt-auto">
-                                  <span class="text-xl font-bold text-white">$15.99</span>
-                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'gameday-3', name: 'Game Day Sliders', price: 15.99, image: './images/sliders.jpeg' })">
+                                  <span class="text-xl font-bold text-white">$7.99</span>
+                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'mozzarella-sticks', name: 'Mozzarella Sticks (5)', price: 7.99, image: 'https://images.unsplash.com/photo-1548340748-6d2b7d7da280?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' })">
+                                      Add to Order
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                    <div class="swiper-slide">
+                      <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden card-hover border border-gray-700 group swiper-card" style="animation: slideInLeft 0.6s ease-out 1.2s both;">
+                          <div class="relative">
+                              <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Popcorn Chicken" class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300">
+                              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                              <h3 class="absolute bottom-4 left-4 text-2xl font-bold text-white">Popcorn Chicken</h3>
+                          </div>
+                          <div class="p-4 flex-grow flex flex-col">
+                              <p class="text-gray-300 mb-4 text-sm flex-grow">Bite-sized crispy chicken pieces</p>
+                              <div class="flex justify-between items-center mt-auto">
+                                  <span class="text-xl font-bold text-white">$6.99</span>
+                                  <button class="bg-red-600 text-white px-4 py-2 rounded-lg font-semibold hover:bg-red-700 transition-colors text-sm" onclick="window.PierogiApp.getCartManager().addItem({ id: 'popcorn-chicken', name: 'Popcorn Chicken', price: 6.99, image: 'https://images.unsplash.com/photo-1586190848861-99aa4a171e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80' })">
                                       Add to Order
                                   </button>
                               </div>
@@ -216,18 +234,18 @@ const PageContent = {
     order: `
         <div id="order-content">
             <div class="text-center mb-6">
-                <h1 class="text-3xl font-bold text-[var(--text-dark)] mb-2">My Order</h1>
-                <p class="text-[var(--text-medium)]">Review your items</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-2">My Order</h1>
+                <p class="text-gray-700">Review your items</p>
             </div>
             
             <div class="bg-white rounded-lg shadow-md p-6 mb-6">
-                <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4">Cart Items</h2>
+                <h2 class="text-xl font-bold text-gray-900 mb-4">Cart Items</h2>
                 <div id="cart-items-list"></div>
             </div>
             
             <div class="bg-white rounded-lg shadow-md p-6">
                 <div class="flex justify-between items-center mb-4">
-                    <span class="text-xl font-bold text-[var(--text-dark)]">Total:</span>
+                    <span class="text-xl font-bold text-gray-900">Total:</span>
                     <span id="cart-total" class="text-xl font-bold text-[var(--primary-color)]">$0.00</span>
                 </div>
                 <button class="w-full bg-[var(--primary-color)] text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors">
@@ -242,12 +260,12 @@ const PageContent = {
                     <div class="bg-white rounded-xl shadow-lg p-8 border-l-4 border-[var(--primary-color)]">
                         <div class="flex items-center mb-6">
                             <div class="w-1 h-8 bg-[var(--primary-color)] mr-4"></div>
-                            <h2 class="text-2xl font-bold text-[var(--text-dark)]">Our Story</h2>
+                            <h2 class="text-2xl font-bold text-gray-900">Our Story</h2>
                         </div>
-                        <p class="text-[var(--text-medium)] leading-relaxed text-lg mb-4">
+                        <p class="text-gray-700 leading-relaxed text-lg mb-4">
                             Endzone Tavern opened its doors in 2025 with a simple vision: to create Myrtle Beach's ultimate sports bar experience. We combine great food, cold drinks, and an unbeatable game-day atmosphere to bring fans together. Our founders, lifelong sports enthusiasts, wanted to create a place where every game feels like the championship.
                         </p>
-                        <p class="text-[var(--text-medium)] leading-relaxed text-lg">
+                        <p class="text-gray-700 leading-relaxed text-lg">
                             Located in the heart of Myrtle Beach, we've become the go-to spot for sports fans, families, and anyone looking for great food and a fun atmosphere. Our state-of-the-art screens and sound system ensure you won't miss a moment of the action, no matter where you're seated.
                         </p>
                     </div>
@@ -258,21 +276,21 @@ const PageContent = {
                     <div class="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl shadow-lg p-8">
                         <div class="flex items-center mb-6">
                             <div class="w-1 h-8 bg-blue-500 mr-4"></div>
-                            <h2 class="text-2xl font-bold text-[var(--text-dark)]">Why Endzone Tavern?</h2>
+                            <h2 class="text-2xl font-bold text-gray-900">Why Endzone Tavern?</h2>
                         </div>
-                        <p class="text-[var(--text-medium)] leading-relaxed text-lg mb-4">
+                        <p class="text-gray-700 leading-relaxed text-lg mb-4">
                             At Endzone Tavern, we're more than just a sports bar - we're a community hub where fans come together to celebrate the games they love. Our unique atmosphere combines the excitement of live sports with the comfort of your favorite local hangout.
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
                             <div class="bg-white rounded-lg p-4 shadow-sm">
                                 <div class="w-8 h-1 bg-blue-400 mb-3 mx-auto"></div>
-                                <h3 class="font-bold text-[var(--text-dark)] mb-2">Game Day Experience</h3>
-                                <p class="text-[var(--text-medium)] text-sm">Multiple HD screens and a stadium-quality sound system</p>
+                                <h3 class="font-bold text-gray-900 mb-2">Game Day Experience</h3>
+                                <p class="text-gray-700 text-sm">Multiple HD screens and a stadium-quality sound system</p>
                             </div>
                             <div class="bg-white rounded-lg p-4 shadow-sm">
                                 <div class="w-8 h-1 bg-green-400 mb-3 mx-auto"></div>
-                                <h3 class="font-bold text-[var(--text-dark)] mb-2">Fan Favorite Menu</h3>
-                                <p class="text-[var(--text-medium)] text-sm">Signature dishes and drinks that score big with our guests</p>
+                                <h3 class="font-bold text-gray-900 mb-2">Fan Favorite Menu</h3>
+                                <p class="text-gray-700 text-sm">Signature dishes and drinks that score big with our guests</p>
                             </div>
                         </div>
                 </div>
@@ -281,16 +299,16 @@ const PageContent = {
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
                     <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div class="w-12 h-1 bg-[var(--primary-color)] mb-6 mx-auto"></div>
-                        <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4 text-center">Our Mission</h2>
-                        <p class="text-[var(--text-medium)] leading-relaxed">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">Our Mission</h2>
+                        <p class="text-gray-700 leading-relaxed">
                             To be the ultimate sports destination in Myrtle Beach, where every game feels like home field advantage. We're committed to delivering an unbeatable combination of great food, cold drinks, and the best game-day atmosphere on the Grand Strand.
                         </p>
                     </div>
                     
                     <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow">
                         <div class="w-12 h-1 bg-[var(--primary-color)] mb-6 mx-auto"></div>
-                        <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4 text-center">Our Values</h2>
-                        <ul class="text-[var(--text-medium)] space-y-2">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">Our Values</h2>
+                        <ul class="text-gray-700 space-y-2">
                             <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Best game-day atmosphere</li>
                             <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Premium sports viewing</li>
                             <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Fan-first service</li>
@@ -303,11 +321,11 @@ const PageContent = {
                 <div class="bg-gradient-to-r from-red-50 to-pink-50 rounded-xl shadow-lg p-8 mb-12">
                     <div class="text-center mb-6">
                         <div class="w-16 h-1 bg-[var(--primary-color)] mb-6 mx-auto"></div>
-                        <h2 class="text-2xl font-bold text-[var(--text-dark)] mb-2">Our Commitment</h2>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-2">Our Commitment</h2>
                         <p class="text-[var(--primary-color)] font-semibold">"Where Every Game Feels Like Home"</p>
                     </div>
                     <div class="bg-white rounded-lg p-6 shadow-sm">
-                        <p class="text-[var(--text-medium)] leading-relaxed text-lg text-center">
+                        <p class="text-gray-700 leading-relaxed text-lg text-center">
                             Whether you're here for the big game, a casual night out, or to enjoy our weekly specials, we're committed to making every visit memorable. Our team works tirelessly to ensure you have the best seats, the coldest drinks, and the most delicious game-day fare in Myrtle Beach. At Endzone Tavern, you're not just a fan - you're part of our team.
                         </p>
                     </div>
@@ -321,34 +339,34 @@ const PageContent = {
     contact: `
         <div id="contact-content" class="max-w-2xl mx-auto">
             <div class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-[var(--text-dark)] mb-4">Contact Us</h1>
-                <p class="text-lg text-[var(--text-medium)]">We'd love to hear from you!</p>
+                <h1 class="text-3xl font-bold text-gray-900 mb-4">Contact Us</h1>
+                <p class="text-lg text-gray-700">We'd love to hear from you!</p>
             </div>
             
             <div class="space-y-6">
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4">Get in Touch</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4">Get in Touch</h2>
                     <div class="space-y-3">
                         <div class="flex items-center space-x-3">
                             <span class="text-[var(--primary-color)] font-semibold">Phone:</span>
-                            <a href="tel:843-945-1056" class="text-[var(--text-medium)] hover:text-yellow-400 transition-colors">843-945-1056</a>
+                            <a href="tel:843-945-1056" class="text-gray-700 hover:text-yellow-400 transition-colors">843-945-1056</a>
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-[var(--primary-color)] font-semibold">Email:</span>
-                            <span class="text-[var(--text-medium)]">endzonetavernsc@gmail.com</span>
+                            <span class="text-gray-700">endzonetavernsc@gmail.com</span>
                         </div>
                         <div class="flex items-center space-x-3">
                             <span class="text-[var(--primary-color)] font-semibold">Address:</span>
-                            <span class="text-[var(--text-medium)]">637 Broadway St, Myrtle Beach, SC 29577</span>
+                            <span class="text-gray-700">637 Broadway St, Myrtle Beach, SC 29577</span>
                         </div>
                 </div>
                 
                 <div class="bg-white rounded-lg shadow-md p-6">
-                    <h2 class="text-xl font-bold text-[var(--text-dark)] mb-4 text-center">Hours</h2>
+                    <h2 class="text-xl font-bold text-gray-900 mb-4 text-center">Hours</h2>
                     <div class="space-y-3">
                         <div class="flex flex-col items-center text-center">
-                            <span class="text-[var(--text-medium)]">Every Day</span>
-                            <span class="text-[var(--text-dark)] font-medium text-lg">3:00 PM - 12:00 AM</span>
+                            <span class="text-gray-700">Every Day</span>
+                            <span class="text-gray-900 font-medium text-lg">3:00 PM - 12:00 AM</span>
                         </div>
                 </div>
             </div>

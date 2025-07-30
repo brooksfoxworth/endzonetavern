@@ -6,14 +6,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let cart = []; // Array to store cart items { id, name, price, quantity }
 
-    // Function to update the cart count in the footer
+    // Function to update the cart count in both mobile and desktop views
     function updateCartCount() {
         const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+        
+        // Update mobile cart count
         cartItemCount.textContent = totalItems;
         if (totalItems > 0) {
             cartItemCount.classList.remove('hidden');
         } else {
             cartItemCount.classList.add('hidden');
+        }
+        
+        // Update desktop cart count if it exists
+        const desktopCartCount = document.getElementById('cart-item-count-desktop');
+        if (desktopCartCount) {
+            desktopCartCount.textContent = totalItems;
+            if (totalItems > 0) {
+                desktopCartCount.classList.remove('hidden');
+            } else {
+                desktopCartCount.classList.add('hidden');
+            }
         }
     }
 
@@ -54,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (cart.length === 0) {
             cartItemsList.innerHTML = `
-                <div class="text-[var(--text-medium)] text-center py-8">
+                <div class="text-gray-700 text-center py-8">
                     Your cart is empty. Add some delicious items!
                 </div>
             `;
@@ -65,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 const cartItemHtml = `
                     <div class="flex items-center justify-between gap-4 py-3 border-b border-[var(--border-color)] last:border-b-0">
                         <div class="flex flex-col flex-1">
-                            <h3 class="text-[var(--text-dark)] text-base font-bold leading-tight">${item.name}</h3>
-                            <p class="text-[var(--text-medium)] text-sm">Qty: ${item.quantity} x $${item.price.toFixed(2)}</p>
+                            <h3 class="text-gray-900 text-base font-bold leading-tight">${item.name}</h3>
+                            <p class="text-gray-700 text-sm">Qty: ${item.quantity} x $${item.price.toFixed(2)}</p>
                         </div>
-                        <span class="text-[var(--text-dark)] text-base font-bold">$${itemTotal.toFixed(2)}</span>
+                        <span class="text-gray-900 text-base font-bold">$${itemTotal.toFixed(2)}</span>
                         <button class="remove-from-cart-btn text-[var(--primary-color)] text-sm font-semibold" data-item-id="${item.id}">Remove</button>
                     </div>
                 `;
@@ -90,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
         home: `
             <div id="home-content" class="text-center py-12">
                 <h2 class="text-[var(--primary-color)] text-4xl font-extrabold leading-tight tracking-[-0.02em] mb-4">Pierogi House</h2>
-                <p class="text-[var(--text-dark)] text-lg font-medium leading-relaxed max-w-sm mx-auto mb-8">
+                <p class="text-gray-900 text-lg font-medium leading-relaxed max-w-sm mx-auto mb-8">
                     Authentic Polish flavors, crafted with love. Your taste of tradition in Myrtle Beach!
                 </p>
                 <img src="assets/images/pierogi-home.jpg" alt="Assortment of pierogi on a plate" class="w-full h-64 object-cover rounded-lg shadow-lg mx-auto mb-8">
@@ -102,23 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
         menu: `
             <div class="overflow-x-auto whitespace-nowrap border-b border-[var(--border-color)] px-4">
                 <nav class="flex gap-6">
-                    <a class="inline-block border-b-2 border-b-[var(--primary-color)] text-[var(--text-dark)] pb-3 pt-2 text-sm font-bold" href="#entrees-section" data-menu-category="entrees">Entrees</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#bakery-section" data-menu-category="bakery">Bakery</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#jars-section" data-menu-category="jars">Jars</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#seasoning-section" data-menu-category="seasoning">Seasoning</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#frozen-pierogi-section" data-menu-category="frozen-pierogi">Frozen Pierogi</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#candy-section" data-menu-category="candy">Candy</a>
-                    <a class="inline-block border-b-2 border-b-transparent text-[var(--text-medium)] pb-3 pt-2 text-sm font-medium hover:text-[var(--text-dark)] transition-colors" href="#drinks-section" data-menu-category="drinks">Drinks</a>
+                    <a class="inline-block border-b-2 border-b-[var(--primary-color)] text-gray-900 pb-3 pt-2 text-sm font-bold" href="#entrees-section" data-menu-category="entrees">Entrees</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#bakery-section" data-menu-category="bakery">Bakery</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#jars-section" data-menu-category="jars">Jars</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#seasoning-section" data-menu-category="seasoning">Seasoning</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#frozen-pierogi-section" data-menu-category="frozen-pierogi">Frozen Pierogi</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#candy-section" data-menu-category="candy">Candy</a>
+                    <a class="inline-block border-b-2 border-b-transparent text-gray-700 pb-3 pt-2 text-sm font-medium hover:text-gray-900 transition-colors" href="#drinks-section" data-menu-category="drinks">Drinks</a>
                 </nav>
             </div>
 
             <div class="px-4 pt-6 pb-24">
-                <h2 id="entrees-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-6">Entrees</h2>
+                <h2 id="entrees-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-6">Entrees</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Sample Flight of 4</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$9.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Sample Flight of 4</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$9.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Sample+Flight");'></div>
@@ -130,8 +143,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Heritage Platter with stuffed CABBAGE</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$24.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Heritage Platter with stuffed CABBAGE</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$24.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Heritage+Platter");'></div>
@@ -143,8 +156,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Stuffed Peppers</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$15.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Stuffed Peppers</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$15.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Stuffed+Peppers");'></div>
@@ -156,8 +169,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Classic Potato & Cheese</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$19.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Classic Potato & Cheese</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$19.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Potato+Cheese");'></div>
@@ -169,8 +182,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Spinach & Feta</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$19.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Spinach & Feta</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$19.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Spinach+Feta");'></div>
@@ -182,8 +195,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Boston Butt</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$19.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Boston Butt</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$19.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Boston+Butt");'></div>
@@ -195,8 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Fried Chicken</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$19.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Fried Chicken</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$19.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Fried+Chicken");'></div>
@@ -208,12 +221,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="bakery-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Bakery</h2>
+                <h2 id="bakery-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Bakery</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Small Sourdough Bread</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$2.50</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Small Sourdough Bread</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$2.50</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Sourdough+Bread");'></div>
@@ -225,8 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Bread Sourdough</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$8.00</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Bread Sourdough</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$8.00</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Bread+Sourdough");'></div>
@@ -238,8 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pistachio Crossaint</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$7.00</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pistachio Crossaint</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$7.00</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Pistachio+Croissant");'></div>
@@ -251,8 +264,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Crossaint Chocolate</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$8.00</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Crossaint Chocolate</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$8.00</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Chocolate+Croissant");'></div>
@@ -264,12 +277,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="jars-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Jars</h2>
+                <h2 id="jars-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Jars</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pickles Polish Dill Polonaise 887ml</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$7.39</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pickles Polish Dill Polonaise 887ml</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$7.39</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Polish+Pickles");'></div>
@@ -281,8 +294,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Mustard Coarse Grain Kosciusko 255g Black</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$4.39</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Mustard Coarse Grain Kosciusko 255g Black</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$4.39</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Mustard+Grain");'></div>
@@ -294,8 +307,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pudliszki Przecier Pomidorowy 500g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$6.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pudliszki Przecier Pomidorowy 500g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$6.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Tomato+Puree");'></div>
@@ -307,8 +320,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Mustard Spicy Brown Kosciuszko 255g Blue</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$4.39</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Mustard Spicy Brown Kosciuszko 255g Blue</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$4.39</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Mustard+Spicy");'></div>
@@ -320,8 +333,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Tamara Sour Cherry Preserve 400g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$7.39</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Tamara Sour Cherry Preserve 400g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$7.39</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Cherry+Preserve");'></div>
@@ -333,12 +346,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="seasoning-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Seasoning</h2>
+                <h2 id="seasoning-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Seasoning</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Seasoning For Sour Soup And Borsch 70g Krakus</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.29</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Seasoning For Sour Soup And Borsch 70g Krakus</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.29</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Borsch+Seasoning");'></div>
@@ -350,8 +363,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Knor Kremowa Zupa Z Kurek Ze Szczypiorkiem 59g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.89</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Knor Kremowa Zupa Z Kurek Ze Szczypiorkiem 59g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.89</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Mushroom+Soup");'></div>
@@ -363,8 +376,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Ketchup Lagodny Kotlin 450g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$4.59</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Ketchup Lagodny Kotlin 450g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$4.59</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Ketchup");'></div>
@@ -376,8 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Ketchup Pikantny Pudliszki 480g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$5.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Ketchup Pikantny Pudliszki 480g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$5.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Spicy+Ketchup");'></div>
@@ -389,12 +402,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="frozen-pierogi-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Frozen Pierogi</h2>
+                <h2 id="frozen-pierogi-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Frozen Pierogi</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pierogi Potato & Cheese (15pc)</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$12.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pierogi Potato & Cheese (15pc)</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$12.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frozen+Potato+Cheese");'></div>
@@ -406,8 +419,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pierogi Sauerkraut & Mushrooms (15pc)</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$12.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pierogi Sauerkraut & Mushrooms (15pc)</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$12.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frozen+Sauerkraut");'></div>
@@ -419,8 +432,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pierogi Boston Butt (15pc)</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$14.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pierogi Boston Butt (15pc)</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$14.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frozen+Boston+Butt");'></div>
@@ -432,8 +445,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pierogi Fried Chicken (15pc)</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$14.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pierogi Fried Chicken (15pc)</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$14.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frozen+Fried+Chicken");'></div>
@@ -445,8 +458,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Pierogi Spinach & Feta (15pc)</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$14.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Pierogi Spinach & Feta (15pc)</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$14.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frozen+Spinach+Feta");'></div>
@@ -458,12 +471,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="candy-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Candy</h2>
+                <h2 id="candy-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Candy</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Golden Cherry 190g Solidarnosc</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$10.39</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Golden Cherry 190g Solidarnosc</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$10.39</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Golden+Cherry");'></div>
@@ -475,8 +488,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Nussbeisser Czekolada Mleczna Z Calymi Migdalami 100g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.59</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Nussbeisser Czekolada Mleczna Z Calymi Migdalami 100g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.59</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Nussbeisser");'></div>
@@ -488,8 +501,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Prince Polo Kokos Olza 50g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$2.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Prince Polo Kokos Olza 50g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$2.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Prince+Polo");'></div>
@@ -501,8 +514,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Milka Relleno Con Crema De Cacao 100g</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Milka Relleno Con Crema De Cacao 100g</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Milka+Cacao");'></div>
@@ -514,12 +527,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </div>
 
-                <h2 id="drinks-section" class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Drinks</h2>
+                <h2 id="drinks-section" class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4 mt-8">Drinks</h2>
                 <div class="space-y-4">
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Soft Drink</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$2.99</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Soft Drink</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$2.99</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Soft+Drink");'></div>
@@ -531,8 +544,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Frugo Ultragreen 500ml</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.49</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Frugo Ultragreen 500ml</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.49</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Frugo");'></div>
@@ -544,8 +557,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4 border-b border-[var(--border-color)]">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Muszynianka Niskonasycona 1.5 L Postep</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$3.69</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Muszynianka Niskonasycona 1.5 L Postep</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$3.69</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Muszynianka");'></div>
@@ -557,8 +570,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div class="flex items-start justify-between gap-4 py-4">
                         <div class="flex flex-col gap-1 flex-1">
-                            <h3 class="text-[var(--text-dark)] text-lg font-bold leading-tight">Boylan Shirley Temple 12 Oz Harvest Pure</h3>
-                            <p class="text-[var(--text-dark)] text-base font-bold mt-2">$2.79</p>
+                            <h3 class="text-gray-900 text-lg font-bold leading-tight">Boylan Shirley Temple 12 Oz Harvest Pure</h3>
+                            <p class="text-gray-900 text-base font-bold mt-2">$2.79</p>
                         </div>
                         <div class="relative">
                             <div class="menu-item-image bg-cover bg-center" style='background-image: url("https://via.placeholder.com/112x112/FFDDC1/FF8219?text=Shirley+Temple");'></div>
@@ -575,22 +588,22 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="w-full h-80 bg-center bg-no-repeat bg-cover" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCEsn4Y3KODn42CV61pTHy-Gd98a0Ek75wK5a4hSrIZcCq9-_4A5Re1ZNwwac7QB4gxMdPsGsyIpfZX8qqN0qD4bOHUaJJ76h8zdKCG78AyCaQCVD0kqnZax8c1LzqzWgN_V0dguE0Qe32Ut-5Zj8zIK7yFgXuz32s2FL0C_3aw9grOW4sW7bw2PjrF5NXjaBAn1QC2riqi3HLAR3bmrIiCICp-dWQHqxA583Z2U3T1bt06oSPuNu6WjrG3PiIWbsjE0KTgzxrjhRk7");'></div>
             <div class="p-6 space-y-8">
                 <section>
-                    <h2 class="text-2xl font-bold text-[var(--text-dark)] mb-3">Our Story</h2>
-                    <p class="text-[var(--text-medium)] text-base leading-relaxed">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Our Story</h2>
+                    <p class="text-gray-700 text-base leading-relaxed">
                         Pierogi House was founded in 2018 by a family passionate about sharing authentic Polish cuisine with the Myrtle Beach community. Our journey began with a simple desire:
                         to create a warm, inviting space where people could savor the rich flavors and traditions of Poland.
                     </p>
                 </section>
                 <section>
-                    <h2 class="text-2xl font-bold text-[var(--text-dark)] mb-3">Our Culinary Philosophy</h2>
-                    <p class="text-[var(--text-medium)] text-base leading-relaxed">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Our Culinary Philosophy</h2>
+                    <p class="text-gray-700 text-base leading-relaxed">
                         At Pierogi House, we believe in using fresh, high-quality ingredients to craft dishes that are both comforting and exciting. Our pierogi are made from scratch daily,
                         filled with a variety of traditional and innovative fillings. We also offer a selection of other Polish favorites, all prepared with care and attention to detail.
                     </p>
                 </section>
                 <section>
-                    <h2 class="text-2xl font-bold text-[var(--text-dark)] mb-3">Our Commitment</h2>
-                    <p class="text-[var(--text-medium)] text-base leading-relaxed">
+                    <h2 class="text-2xl font-bold text-gray-900 mb-3">Our Commitment</h2>
+                    <p class="text-gray-700 text-base leading-relaxed">
                         We are committed to providing exceptional service and creating a memorable dining experience for every guest. Whether you're a long-time fan of Polish food or trying it
                         for the first time, we welcome you to join us at Pierogi House and discover the taste of Poland.
                     </p>
@@ -599,8 +612,8 @@ document.addEventListener('DOMContentLoaded', () => {
         `,
         contact: `
             <section class="mb-12 text-center">
-                <h2 class="text-[var(--text-dark)] text-3xl font-bold leading-tight tracking-tighter mb-4">Get in Touch</h2>
-                <p class="text-[var(--text-dark)]/80 text-base font-normal leading-relaxed max-w-md mx-auto">
+                <h2 class="text-gray-900 text-3xl font-bold leading-tight tracking-tighter mb-4">Get in Touch</h2>
+                <p class="text-gray-900/80 text-base font-normal leading-relaxed max-w-md mx-auto">
                     We'd love to hear from you! Whether you have a question about our menu, want to make a reservation, or just want to say hello, please don't hesitate to reach out.
                 </p>
             </section>
@@ -611,7 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div>
                         <h3 class="text-[var(--secondary-color)] text-sm font-semibold">Address</h3>
-                        <p class="text-[var(--text-dark)] text-base font-medium">123 Main Street, Myrtle Beach, SC 29577</p>
+                        <p class="text-gray-900 text-base font-medium">123 Main Street, Myrtle Beach, SC 29577</p>
                     </div>
                 </div>
                 <div class="flex items-start space-x-4 p-4 rounded-2xl bg-white/50 shadow-sm">
@@ -620,7 +633,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div>
                         <h3 class="text-[var(--secondary-color)] text-sm font-semibold">Phone</h3>
-                        <p class="text-[var(--text-dark)] text-base font-medium">(843) 555-1212</p>
+                        <p class="text-gray-900 text-base font-medium">(843) 555-1212</p>
                     </div>
                 </div>
                 <div class="flex items-start space-x-4 p-4 rounded-2xl bg-white/50 shadow-sm">
@@ -629,24 +642,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                     <div>
                         <h3 class="text-[var(--secondary-color)] text-sm font-semibold">Email</h3>
-                        <p class="text-[var(--text-dark)] text-base font-medium">info@pierogihouse.com</p>
+                        <p class="text-gray-900 text-base font-medium">info@pierogihouse.com</p>
                     </div>
                 </div>
             </section>
             <section>
-                <h2 class="text-[var(--text-dark)] text-3xl font-bold leading-tight tracking-tighter mb-8 text-center">Send Us a Message</h2>
+                <h2 class="text-gray-900 text-3xl font-bold leading-tight tracking-tighter mb-8 text-center">Send Us a Message</h2>
                 <form class="space-y-6">
                     <div>
                         <label class="sr-only" for="name">Your Name</label>
-                        <input class="form-input w-full rounded-full border-0 bg-[var(--form-background-color)] h-14 px-6 text-[var(--text-dark)] placeholder:text-[var(--text-medium)] focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="name" name="name" placeholder="Your Name" type="text"/>
+                        <input class="form-input w-full rounded-full border-0 bg-[var(--form-background-color)] h-14 px-6 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="name" name="name" placeholder="Your Name" type="text"/>
                     </div>
                     <div>
                         <label class="sr-only" for="email">Your Email</label>
-                        <input class="form-input w-full rounded-full border-0 bg-[var(--form-background-color)] h-14 px-6 text-[var(--text-dark)] placeholder:text-[var(--text-medium)] focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="email" name="email" placeholder="Your Email" type="email"/>
+                        <input class="form-input w-full rounded-full border-0 bg-[var(--form-background-color)] h-14 px-6 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="email" name="email" placeholder="Your Email" type="email"/>
                     </div>
                     <div>
                         <label class="sr-only" for="message">Your Message</label>
-                        <textarea class="form-textarea w-full rounded-3xl border-0 bg-[var(--form-background-color)] p-6 text-[var(--text-dark)] placeholder:text-[var(--text-medium)] focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="message" name="message" placeholder="Your Message" rows="6"></textarea>
+                        <textarea class="form-textarea w-full rounded-3xl border-0 bg-[var(--form-background-color)] p-6 text-gray-900 placeholder:text-gray-700 focus:ring-2 focus:ring-[var(--primary-color)] transition duration-300 ease-in-out" id="message" name="message" placeholder="Your Message" rows="6"></textarea>
                     </div>
                     <div class="flex justify-end pt-2">
                         <button class="w-full sm:w-auto flex items-center justify-center rounded-full h-14 px-8 bg-[var(--primary-color)] text-white text-base font-bold tracking-wide shadow-lg hover:bg-opacity-90 transform hover:scale-105 transition-all duration-300 ease-in-out" type="submit">
@@ -658,11 +671,11 @@ document.addEventListener('DOMContentLoaded', () => {
         `,
         order: `
             <div class="flex flex-col h-full py-6 px-4">
-                <h2 class="text-[var(--text-dark)] text-2xl font-bold leading-tight tracking-[-0.015em] mb-4">My Order</h2>
+                <h2 class="text-gray-900 text-2xl font-bold leading-tight tracking-[-0.015em] mb-4">My Order</h2>
                 <div id="cart-items-list" class="flex-grow space-y-4 overflow-y-auto">
                     </div>
                 <div id="cart-summary" class="mt-6 border-t border-[var(--border-color)] pt-4">
-                    <div class="flex justify-between items-center text-[var(--text-dark)] text-lg font-bold mb-2">
+                    <div class="flex justify-between items-center text-gray-900 text-lg font-bold mb-2">
                         <span>Total:</span>
                         <span id="cart-total">$0.00</span>
                     </div>
@@ -677,28 +690,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const pageHeaders = {
         home: `
             <div class="flex items-center p-4 justify-center">
-                <h1 class="text-[var(--text-dark)] text-xl font-bold leading-tight tracking-[-0.015em]">Welcome</h1>
+                <h1 class="text-gray-900 text-xl font-bold leading-tight tracking-[-0.015em]">Welcome</h1>
             </div>
         `,
         menu: `
             <div class="flex items-center p-4 pb-2 justify-between">
-                <button class="text-[var(--text-dark)] flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-[var(--text-light)] transition-colors" onclick="history.back()">
+                <button class="text-gray-900 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-[var(--text-light)] transition-colors" onclick="history.back()">
                     <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
                         <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
                     </svg>
                 </button>
-                <h1 class="text-[var(--text-dark)] text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Order Online</h1>
+                <h1 class="text-gray-900 text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Order Online</h1>
                 <div class="w-10"></div>
             </div>
         `,
         about: `
             <div class="flex items-center justify-between p-4 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
-                <button class="text-[var(--text-dark)]" onclick="history.back()">
+                <button class="text-gray-900" onclick="history.back()">
                     <svg fill="currentColor" height="28" viewBox="0 0 256 256" width="28" xmlns="http://www.w3.org/2000/svg">
                         <path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"></path>
                     </svg>
                 </button>
-                <h1 class="text-[var(--text-dark)] text-xl font-bold leading-tight tracking-[-0.015em]">About Pierogi House</h1>
+                <h1 class="text-gray-900 text-xl font-bold leading-tight tracking-[-0.015em]">About Pierogi House</h1>
                 <div class="w-7"></div>
             </div>
         `,
@@ -714,12 +727,12 @@ document.addEventListener('DOMContentLoaded', () => {
         `,
         order: `
             <div class="flex items-center p-4">
-                <button class="text-[var(--text-dark)] flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-[var(--text-light)] transition-colors" onclick="history.back()">
+                <button class="text-gray-900 flex size-10 shrink-0 items-center justify-center rounded-full hover:bg-[var(--text-light)] transition-colors" onclick="history.back()">
                     <svg fill="currentColor" height="24px" viewBox="0 0 256 256" width="24px" xmlns="http://www.w3.org/2000/svg">
                         <path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"></path>
                     </svg>
                 </button>
-                <h1 class="text-[var(--text-dark)] text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Order</h1>
+                <h1 class="text-gray-900 text-xl font-bold leading-tight tracking-[-0.015em] flex-1 text-center">My Order</h1>
                 <div class="w-10"></div>
             </div>
         `
@@ -739,7 +752,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const linkPage = link.dataset.pageLink;
             if (linkPage === page) {
                 link.classList.add('text-[var(--primary-color)]', 'font-semibold');
-                link.classList.remove('text-[var(--text-medium)]');
+                link.classList.remove('text-gray-700');
                 
                 const divInLinkH7 = link.querySelector('div.flex.h-7.items-center.justify-center');
                 const divInLinkH8W8 = link.querySelector('div.flex.h-8.w-8.items-center.justify-center');
@@ -759,7 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 link.classList.remove('text-[var(--primary-color)]', 'font-semibold');
-                link.classList.add('text-[var(--text-medium)]');
+                link.classList.add('text-gray-700');
                 
                 const divInLinkH7 = link.querySelector('div.flex.h-7.items-center.justify-center');
                 const divInLinkH8W8 = link.querySelector('div.flex.h-8.w-8.items-center.justify-center');
@@ -782,11 +795,11 @@ document.addEventListener('DOMContentLoaded', () => {
             currentMenuSubNavLinks.forEach(link => {
                 // Set 'Entrees' as active by default when menu page loads
                 if (link.textContent.trim() === 'Entrees') { 
-                    link.classList.add('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-                    link.classList.remove('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+                    link.classList.add('border-b-[var(--primary-color)]', 'text-gray-900', 'font-bold');
+                    link.classList.remove('border-b-transparent', 'text-gray-700', 'font-medium', 'hover:text-gray-900');
                 } else {
-                    link.classList.remove('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-                    link.classList.add('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+                    link.classList.remove('border-b-[var(--primary-color)]', 'text-gray-900', 'font-bold');
+                    link.classList.add('border-b-transparent', 'text-gray-700', 'font-medium', 'hover:text-gray-900');
                 }
 
                 link.addEventListener('click', (e) => {
@@ -797,11 +810,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         targetElement.scrollIntoView({ behavior: 'smooth' });
 
                         currentMenuSubNavLinks.forEach(subLink => {
-                            subLink.classList.remove('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-                            subLink.classList.add('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+                            subLink.classList.remove('border-b-[var(--primary-color)]', 'text-gray-900', 'font-bold');
+                            subLink.classList.add('border-b-transparent', 'text-gray-700', 'font-medium', 'hover:text-gray-900');
                         });
-                        link.classList.add('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-                        link.classList.remove('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+                        link.classList.add('border-b-[var(--primary-color)]', 'text-gray-900', 'font-bold');
+                        link.classList.remove('border-b-transparent', 'text-gray-700', 'font-medium', 'hover:text-gray-900');
                     }
                 });
             });
@@ -818,14 +831,31 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // Event listeners for footer navigation
-    footerLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const page = e.currentTarget.dataset.pageLink; // Use currentTarget
-            loadPage(page);
+    // Function to setup navigation event listeners
+    function setupNavigationListeners() {
+        // Event listeners for footer navigation
+        const currentFooterLinks = document.querySelectorAll('footer a[data-page-link]');
+        currentFooterLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = e.currentTarget.dataset.pageLink;
+                loadPage(page);
+            });
         });
-    });
+        
+        // Event listeners for header navigation (desktop)
+        const headerLinks = document.querySelectorAll('header a[data-page-link]');
+        headerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = e.currentTarget.dataset.pageLink;
+                loadPage(page);
+            });
+        });
+    }
+    
+    // Initial setup of navigation listeners
+    setupNavigationListeners();
 
     // Initial page load: Set to 'home'
     loadPage('home');

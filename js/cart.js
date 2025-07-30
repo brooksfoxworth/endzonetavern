@@ -88,7 +88,7 @@ class CartManager {
      */
     getEmptyCartHTML() {
         return `
-            <div class="text-[var(--text-medium)] text-center py-8">
+            <div class="text-gray-700 text-center py-8">
                 Your cart is empty. Add some delicious items!
             </div>
         `;
@@ -101,10 +101,10 @@ class CartManager {
         return `
             <div class="flex items-center justify-between gap-4 py-3 border-b border-[var(--border-color)] last:border-b-0">
                 <div class="flex flex-col flex-1">
-                    <h3 class="text-[var(--text-dark)] text-base font-bold leading-tight">${item.name}</h3>
-                    <p class="text-[var(--text-medium)] text-sm">Qty: ${item.quantity} x $${item.price.toFixed(2)}</p>
+                    <h3 class="text-gray-900 text-base font-bold leading-tight">${item.name}</h3>
+                    <p class="text-gray-700 text-sm">Qty: ${item.quantity} x $${item.price.toFixed(2)}</p>
                 </div>
-                <span class="text-[var(--text-dark)] text-base font-bold">$${itemTotal.toFixed(2)}</span>
+                <span class="text-gray-900 text-base font-bold">$${itemTotal.toFixed(2)}</span>
                 <button class="remove-from-cart-btn text-[var(--primary-color)] text-sm font-semibold" data-item-id="${item.id}">Remove</button>
             </div>
         `;

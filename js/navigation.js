@@ -60,51 +60,28 @@ class NavigationManager {
      * Reset link styles to default state
      */
     resetLinkStyles(link, linkPage) {
-        link.classList.remove('text-[var(--primary-color)]', 'font-semibold');
-        link.classList.add('text-[var(--text-medium)]');
+        // Reset text elements to default state
+        const textElements = link.querySelectorAll('span, p');
+        textElements.forEach(element => {
+            element.classList.remove('text-[var(--primary-color)]', 'font-semibold');
+            element.classList.add('text-gray-700');
+        });
         
-        const divInLinkH7 = link.querySelector('div.flex.h-7.items-center.justify-center');
-        const divInLinkH8W8 = link.querySelector('div.flex.h-8.w-8.items-center.justify-center');
-
-        if (linkPage === 'order') {
-            if (divInLinkH7) {
-                divInLinkH7.classList.remove('bg-[var(--text-light)]', 'rounded-lg', 'py-1');
-            }
-        } else if (linkPage === 'contact') {
-            const activeBg = link.querySelector('.absolute.-inset-2');
-            if (activeBg) activeBg.remove();
-            if (divInLinkH8W8) {
-                divInLinkH8W8.classList.remove('text-[var(--primary-color)]');
-            }
-        }
+        // Remove any background elements that might have been added
+        const activeBg = link.querySelector('.absolute.-inset-2');
+        if (activeBg) activeBg.remove();
     }
 
     /**
      * Set active link styles
      */
     setActiveLinkStyles(link, linkPage) {
-        const pTag = link.querySelector('p');
-        if (pTag) {
-            pTag.classList.add('text-[var(--primary-color)]', 'font-semibold');
-            pTag.classList.remove('text-[var(--text-medium)]', 'font-medium');
-        }
-
-        const divInLinkH7 = link.querySelector('div.flex.h-7.items-center.justify-center');
-        const divInLinkH8W8 = link.querySelector('div.flex.h-8.w-8.items-center.justify-center');
-
-        if (linkPage === 'order') {
-            if (divInLinkH7) {
-                divInLinkH7.classList.add('bg-[var(--text-light)]', 'rounded-lg', 'py-1');
-            }
-        } else if (linkPage === 'contact') {
-            if (divInLinkH8W8) {
-                divInLinkH8W8.classList.add('text-[var(--primary-color)]');
-                const activeBg = document.createElement('div');
-                activeBg.className = 'absolute -inset-2 bg-[var(--text-light)] rounded-lg';
-                divInLinkH8W8.style.position = 'relative';
-                divInLinkH8W8.insertBefore(activeBg, divInLinkH8W8.firstChild);
-            }
-        }
+        // Set active styles for text elements only (no backgrounds or boxes)
+        const textElements = link.querySelectorAll('span, p');
+        textElements.forEach(element => {
+            element.classList.add('text-[var(--primary-color)]', 'font-semibold');
+            element.classList.remove('text-gray-700', 'font-medium');
+        });
     }
 
     /**
@@ -152,16 +129,16 @@ class NavigationManager {
      * Set menu link as active
      */
     setActiveMenuLink(link) {
-        link.classList.add('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-        link.classList.remove('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+        link.classList.add('border-b-[var(--primary-color)]', 'text-black', 'font-bold');
+        link.classList.remove('border-b-transparent', 'text-black', 'font-medium', 'hover:text-gray-700');
     }
 
     /**
      * Set menu link as inactive
      */
     setInactiveMenuLink(link) {
-        link.classList.remove('border-b-[var(--primary-color)]', 'text-[var(--text-dark)]', 'font-bold');
-        link.classList.add('border-b-transparent', 'text-[var(--text-medium)]', 'font-medium', 'hover:text-[var(--text-dark)]');
+        link.classList.remove('border-b-[var(--primary-color)]', 'text-black', 'font-bold');
+        link.classList.add('border-b-transparent', 'text-black', 'font-medium', 'hover:text-gray-700');
     }
 
     /**
